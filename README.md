@@ -25,7 +25,7 @@ Check out the demo video to see AstroAI in action: [AstroAI Demo](https://drive.
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/fatimaazfar/Astrology-Chatbot.git
+   git clone https://github.com/AbdulRehmanRattu/Astrology-Chatbot.git
    cd astroai
    ```
 
@@ -99,4 +99,4 @@ By following these steps, you can get started with AstroAI and explore the perso
 
 ## Support
 
-If you encounter any issues or have questions about AstroAI, please contact fatimaazfar381@gmail.com for assistance.
+If you encounter any issues or have questions about AstroAI, please contact rattu786.ar@gmail.com for assistance.

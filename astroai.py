@@ -3,44 +3,52 @@ from tkinter import scrolledtext
 import requests
 from datetime import datetime
 
-OPENAI_API_KEY = 'your-openai_API-key'
+OPENAI_API_KEY = 'your-openai-api-key'
+
 
 class GPTChatbotApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Astro AI")
         
-        self.root.geometry('600x600')
+        self.root.geometry('700x700')
+        self.root.configure(bg='#1e1e2e')
+
+        # Styling elements
+        font_style_title = ("Helvetica", 24, "bold")
+        font_style_label = ("Helvetica", 12)
+        font_style_entry = ("Helvetica", 12)
+        font_style_button = ("Helvetica", 14, "bold")
+
+        self.title_label = tk.Label(root, text="Astro AI", font=font_style_title, bg='#1e1e2e', fg='#ff79c6')
+        self.title_label.grid(row=0, column=0, columnspan=2, pady=20)
+
+        self.create_input_field("Date of Birth (MM/DD/YYYY):", "dob", 1, font_style_label, font_style_entry)
+        self.create_input_field("Time of Birth (HH:MM AM/PM):", "tob", 2, font_style_label, font_style_entry)
+        self.create_input_field("City of Birth:", "cob", 3, font_style_label, font_style_entry)
         
-        self.root.configure(bg='#0d1440')
+        self.submit_button = tk.Button(root, text="Submit", font=font_style_button, bg='#ff79c6', fg='white', command=self.submit_details)
+        self.submit_button.grid(row=4, column=0, columnspan=2, pady=10, padx=10, sticky='ew')
         
-        self.title_label = tk.Label(root, text="Astro AI", font=("Gotham", 24), bg='#0d1440', fg='#ff69b4')
-        self.title_label.grid(row=0, column=0, columnspan=2, pady=10)
+        self.reset_button = None  # Initialize reset button as None
         
-        self.create_input_field("Date of Birth (dd/mm/yyyy):", "dob", 1)
-        self.create_input_field("Time of Birth (HH:MM):", "tob", 2)
-        self.create_input_field("City of Birth:", "cob", 3)
-        
-        self.submit_button = tk.Button(root, text="Submit", font=("Gotham", 14), bg='#ff69b4', fg='white', command=self.submit_details)
-        self.submit_button.grid(row=4, column=0, columnspan=2, pady=10)
-        
-        self.init_chat_interface()
+        self.init_chat_interface(font_style_label, font_style_entry, font_style_button)
 
         self.user_details = {}
         self.conversation_history = []
 
-    def create_input_field(self, label_text, field_name, row):
-        label = tk.Label(self.root, text=label_text, font=("Gotham", 12), bg='#0d1440', fg='white')
-        label.grid(row=row, column=0, padx=10, pady=5, sticky='e')
-        entry = tk.Entry(self.root, font=("Gotham", 12), bg='#333333', fg='white', width=40)
-        entry.grid(row=row, column=1, padx=10, pady=5, sticky='w')
+    def create_input_field(self, label_text, field_name, row, font_style_label, font_style_entry):
+        label = tk.Label(self.root, text=label_text, font=font_style_label, bg='#1e1e2e', fg='white')
+        label.grid(row=row, column=0, padx=10, pady=10, sticky='e')
+        entry = tk.Entry(self.root, font=font_style_entry, bg='#44475a', fg='white', width=40, insertbackground='white')
+        entry.grid(row=row, column=1, padx=10, pady=10, sticky='w')
         setattr(self, field_name, entry)
 
     def submit_details(self):
         self.user_details['dob'] = self.dob.get()
         self.user_details['tob'] = self.tob.get()
         self.user_details['cob'] = self.cob.get()
-        self.user_details['tod'] = datetime.now().strftime("%d/%m/%Y")
+        self.user_details['tod'] = datetime.now().strftime("%m/%d/%Y")
 
         self.conversation_history = [
             {"role": "system", "content": self.construct_custom_prompt()}
@@ -62,6 +70,14 @@ class GPTChatbotApp:
         self.status_label.grid(row=3, column=0, columnspan=2, pady=5)
         self.status_label.config(text="Ask me anything about astrology...")
 
+        # Add reset button after submission
+        self.reset_button = tk.Button(self.root, text="Reset", font=("Helvetica", 14, "bold"), bg='#ff79c6', fg='white', command=self.reset_to_home)
+        self.reset_button.grid(row=4, column=0, columnspan=2, pady=10, padx=10, sticky='ew')
+
+    def reset_to_home(self):
+        self.clear_screen()
+        self.__init__(self.root)
+
     def construct_custom_prompt(self):
         return (
             f"You are an expert astrologist. You are chatting with a user who was born on {self.user_details['dob']} "
@@ -73,19 +89,17 @@ class GPTChatbotApp:
         for widget in self.root.winfo_children():
             widget.grid_forget()
 
-    def init_chat_interface(self):
-        self.conversation_area = scrolledtext.ScrolledText(self.root, wrap=tk.WORD, font=("Gotham", 12), bg='#0d1440', fg='white', height=20, width=60)
-        self.conversation_area.configure(state='disabled')
-
-        self.conversation_area.tag_configure('user_bold', font=("Gotham", 12, "bold"))
-        self.conversation_area.tag_configure('bot_bold', font=("Gotham", 12, "bold"))
-        self.conversation_area.tag_configure('user', background='#333333', foreground='#ffffff', justify='right')
-        self.conversation_area.tag_configure('bot', background='#ff69b4', foreground='#ffffff', justify='left')
-        self.conversation_area.tag_configure('system', background='#0d1440', foreground='#ff69b4', justify='center')
+    def init_chat_interface(self, font_style_label, font_style_entry, font_style_button):
+        self.conversation_area = scrolledtext.ScrolledText(self.root, wrap=tk.WORD, font=font_style_entry, bg='#282a36', fg='white', height=20, width=60)
+        self.conversation_area.tag_configure('user_bold', font=("Helvetica", 12, "bold"))
+        self.conversation_area.tag_configure('bot_bold', font=("Helvetica", 12, "bold"))
+        self.conversation_area.tag_configure('user', background='#44475a', foreground='#ffffff', justify='right')
+        self.conversation_area.tag_configure('bot', background='#ff79c6', foreground='#ffffff', justify='left')
+        self.conversation_area.tag_configure('system', background='#1e1e2e', foreground='#ff79c6', justify='center')
         
-        self.user_input = tk.Entry(self.root, font=("Gotham", 12), bg='#333333', fg='white', width=40)
-        self.send_button = tk.Button(self.root, text="Send", font=("Gotham", 14), bg='#ff69b4', fg='white', command=self.send_message)
-        self.status_label = tk.Label(self.root, text="", font=("Gotham", 12), bg='#0d1440', fg='white')
+        self.user_input = tk.Entry(self.root, font=font_style_entry, bg='#44475a', fg='white', width=40, insertbackground='white')
+        self.send_button = tk.Button(self.root, text="Send", font=font_style_button, bg='#ff79c6', fg='white', command=self.send_message)
+        self.status_label = tk.Label(self.root, text="", font=font_style_label, bg='#1e1e2e', fg='white')
 
     def get_welcome_message(self):
         try:
