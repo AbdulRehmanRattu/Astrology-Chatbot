@@ -22,7 +22,7 @@ class GPTChatbotApp:
         self.title_label = tk.Label(root, text="Astro AI", font=font_style_title, bg='#2e3440', fg='#bf616a')
         self.title_label.grid(row=0, column=0, columnspan=2, pady=20)
 
-        self.create_input_field("Date of Birth (MM/DD/YYYY):", "dob", 1, font_style_label, font_style_entry)
+        self.create_input_field("Date of Birth (DD/MM/YYYY):", "dob", 1, font_style_label, font_style_entry)
         self.create_input_field("Time of Birth (HH:MM AM/PM):", "tob", 2, font_style_label, font_style_entry)
         self.create_input_field("City of Birth:", "cob", 3, font_style_label, font_style_entry)
         
