@@ -22,12 +22,13 @@ class GPTChatbotApp:
         self.title_label = tk.Label(root, text="Astro AI", font=font_style_title, bg='#2e3440', fg='#bf616a')
         self.title_label.grid(row=0, column=0, columnspan=2, pady=20)
 
-        self.create_input_field("Date of Birth (DD/MM/YYYY):", "dob", 1, font_style_label, font_style_entry)
-        self.create_input_field("Time of Birth (HH:MM AM/PM):", "tob", 2, font_style_label, font_style_entry)
+        self.create_input_field("Date of Birth (MM/DD/YYYY):", "dob", 1, font_style_label, font_style_entry)
+        self.create_input_field("Time of Birth (HH:MM):", "tob", 2, font_style_label, font_style_entry)
         self.create_input_field("City of Birth:", "cob", 3, font_style_label, font_style_entry)
+        self.create_input_field("Choose Date (MM/DD/YYYY):", "cod", 4, font_style_label, font_style_entry)
         
         self.submit_button = tk.Button(root, text="Submit", font=font_style_button, bg='#88c0d0', fg='#2e3440', command=self.submit_details)
-        self.submit_button.grid(row=4, column=0, columnspan=2, pady=10, padx=10, sticky='ew')
+        self.submit_button.grid(row=5, column=0, columnspan=2, pady=10, padx=10, sticky='ew')
         
         self.reset_button = None  # Initialize reset button as None
         
@@ -47,7 +48,7 @@ class GPTChatbotApp:
         self.user_details['dob'] = self.dob.get()
         self.user_details['tob'] = self.tob.get()
         self.user_details['cob'] = self.cob.get()
-        self.user_details['tod'] = datetime.now().strftime("%m/%d/%Y")
+        self.user_details['cod'] = self.cod.get()
 
         self.conversation_history = [
             {"role": "system", "content": self.construct_custom_prompt()}
@@ -56,6 +57,7 @@ class GPTChatbotApp:
         self.dob.delete(0, tk.END)
         self.tob.delete(0, tk.END)
         self.cob.delete(0, tk.END)
+        self.cod.delete(0, tk.END)
 
         self.clear_screen()
         self.display_message("System", "User details submitted successfully. Generating your personalized horoscope...", 'system')
@@ -80,7 +82,7 @@ class GPTChatbotApp:
     def construct_custom_prompt(self):
         return (
             f"You are an expert astrologist. You are chatting with a user who was born on {self.user_details['dob']} "
-            f"at {self.user_details['tob']} in {self.user_details['cob']}. Today's date is {self.user_details['tod']}. "
+            f"at {self.user_details['tob']} in {self.user_details['cob']}. The user has chosen the date {self.user_details['cod']}. "
             "Provide horoscopes and answer the user's questions in a friendly and informative manner."
         )
 
