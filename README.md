@@ -10,10 +10,6 @@ AstroAI is an interactive desktop application designed to provide personalized h
 - **Astrological Insights:** Users can ask questions related to astrology and receive informative responses.
 - **Engaging Chat Interface:** Provides a conversational interface for interacting with the user.
 
-## Demo
-
-Check out the demo video to see AstroAI in action: [AstroAI Demo](https://drive.google.com/file/d/15UODIiqQoYQmN5iTmTrwF1-dzwgU-zAg/view?usp=sharing)
-
 ## Requirements
 
 - Python 3.x
