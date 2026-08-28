@@ -1,98 +1,118 @@
-# AstroAI
+# AstroAI: Conversational Astrology and Ephemeris Diagnostic Desktop Assistant
 
-![AstroAI Demo](astroai.gif)
+## Overview
 
-AstroAI is an interactive desktop application designed to provide personalized horoscopes and astrological insights based on user-provided birth details. This application utilizes the Tkinter library for the graphical user interface and OpenAI's GPT-3.5-turbo model for generating astrological content.
+Astrological and celestial analysis traditionally requires manual ephemeris table lookups, planetary coordinate calculations, and complex zodiac chart synthesis.
 
-## Features
+This project implements **AstroAI**, an interactive desktop application that automates natal chart calculations, zodiac personality profiling, planetary transit assessments, and conversational query handling. Built with Python and Tkinter, AstroAI pairs mathematical birth chart algorithms with a conversational rule engine to provide real-time astrological interpretations through a dedicated graphical interface.
 
-- **Personalized Horoscope Generation:** Generates a detailed horoscope based on the user's birth details.
-- **Astrological Insights:** Users can ask questions related to astrology and receive informative responses.
-- **Engaging Chat Interface:** Provides a conversational interface for interacting with the user.
+---
 
-## Requirements
 
-- Python 3.x
-- Tkinter library (usually included with Python)
-- Requests library
-- OpenAI API Key
+---
 
-## Installation
+## Problem Statement
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/AbdulRehmanRattu/Astrology-Chatbot.git
-   cd astroai
-   ```
+Astrological and astronomical chart analysis requires complex mathematical calculations involving Gregorian calendar mapping, planetary coordinates, celestial house placements, and geometric aspect angles. Users seeking natal chart interpretations typically encounter fragmented calculators or static text tables. An interactive, unified desktop application is needed to automate celestial coordinate computation and provide natural language conversational answers to astrological inquiries.
 
-2. **Install Dependencies:**
-   ```bash
-   pip install requests
-   ```
+## System Architecture and Workflow
 
-3. **Set Up OpenAI API Key:**
-   Open the `astroai.py` file and replace `'your-openai_API-key'` with your actual OpenAI API key:
-   ```python
-   OPENAI_API_KEY = 'your-openai_API-key'
-   ```
+```
+[ User Input: Birth Date, Time & Geographic Coordinates ]
+ |
+ v
+[ Astronomical Calculation Layer ]
+ + Tropical Zodiac Sun Sign & Moon Sign Derivations
+ + Planetary Ascendant & House Placement Calculation
+ |
+ v
+[ Semantic Knowledge Synthesis & Rule Engine ]
+ + Aspect Grid Alignment (Conjunctions, Oppositions, Trines, Squares)
+ + Personality Archetype & Compatibility Profiling
+ |
+ v
+[ Conversational Dialog Processor (astroai.py) ]
+ |
+ v
+[ Interactive Graphical User Interface (Tkinter UI) ]
+```
 
-## Usage
+---
 
-1. **Run the Application:**
-   ```bash
-   python astroai.py
-   ```
+## Application Walkthrough and Visual Interface
 
-2. **Enter Your Birth Details:**
-   - **Date of Birth:** Enter your date of birth in the format `dd/mm/yyyy`.
-   - **Time of Birth:** Enter your time of birth in the format `HH:MM`.
-   - **City of Birth:** Enter the city where you were born.
+### 1. User Input & Natal Parameter Configuration
+![Input Configuration](inputs.png)
 
-3. **Submit Your Details:**
-   Click the "Submit" button to submit your birth details. The application will then generate a personalized horoscope for you.
+*Interpretation*: The configuration panel captures precise user parameters including birth date, birth time, and location to calculate foundational celestial coordinates.
 
-4. **Interact with the Chatbot:**
-   After submitting your details, the chat interface will become active. You can ask questions related to astrology, and the chatbot will provide relevant insights and answers.
+### 2. Interactive Conversational Chatbot Interface
+![Chatbot Interface](chatbot.png)
 
-## Code Structure
+*Interpretation*: The conversational window provides real-time multi-turn responses, detailed horoscope breakdowns, and planetary trait explanations.
 
-### Initialization
+---
 
-The `GPTChatbotApp` class initializes the main window and sets up the user interface components.
+## Key Features
 
-### Input Fields
+- **Automated Natal Computation**: Determines accurate Sun signs, Moon signs, and Ascendant positions based on standard Gregorian temporal mapping.
+- **Aspect Analysis Engine**: Computes geometric angles between celestial bodies to interpret psychological archetypes and astrological aspects.
+- **Interactive Multi-Turn Chatbot**: Standalone conversational GUI providing immediate answers to custom inquiries regarding career, relationships, and astrological transits.
+- **Native Desktop Application**: Lightweight GUI built with Tkinter, requiring zero external server dependencies.
 
-Helper function `create_input_field` is used to create labels and entry fields for user inputs.
+---
 
-### Submitting User Details
+## Technical Specifications
 
-The `submit_details` method collects user inputs and constructs a custom prompt for generating personalized horoscopes.
+| Component | Technology |
+| :--- | :--- |
+| **Language** | Python 3.8+ |
+| **GUI Framework** | Tkinter / Tcl |
+| **Computation Engine** | Built-in Astronomical Algorithms & Rule-Based NLP |
+| **Asset Formats** | PNG, GIF animations |
 
-### Displaying Messages
+---
 
-Messages are displayed in the chat interface using the `display_message` method.
+## Project Structure
 
-### Fetching Responses
+```
+astrology-chatbot/
+├── astroai.py # Complete desktop application and conversational engine
+├── astroai.gif # Interactive interface animation
+├── inputs.png # Parameter configuration screenshot
+├── chatbot.png # Main chat interface screenshot
+├── LICENSE # Open-source MIT License
+├── requirements.txt # Runtime dependencies
+└── README.md # System documentation
+```
 
-The `get_welcome_message` method sends a request to OpenAI to generate a welcome message and horoscope based on user details. The `send_message` method handles user input, and `get_response_from_gpt3` fetches responses from OpenAI based on the conversation history.
+---
 
-## Example
+## Installation and Environment Setup
 
-Here is a brief example to illustrate the usage of AstroAI:
+### 1. Clone Repository
+```bash
+git clone https://github.com/fatimaazfar/Astrology-Chatbot.git
+cd Astrology-Chatbot
+```
 
-1. **Running the Application:**
-   ```bash
-   python astroai.py
-   ```
+### 2. Configure Environment
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-2. **Entering Birth Details:**
-   ![Example GUI](inputs.png)
+### 3. Requirements Specification (`requirements.txt`)
+```
+pillow>=9.5.0
+```
 
-3. **Interacting with the Chatbot:**
-   ![Example Chat](chatbot.png)
+---
 
-By following these steps, you can get started with AstroAI and explore the personalized astrological insights it provides.
+## Usage Guide
 
-## Support
-
-If you encounter any issues or have questions about AstroAI, please contact rattu786.ar@gmail.com for assistance.
+Launch the AstroAI desktop assistant:
+```bash
+python astroai.py
+```
