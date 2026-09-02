@@ -3,13 +3,14 @@
 <div align="center">
 
 [<img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License">](https://opensource.org/licenses/Apache-2.0)
-<img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB.svg?logo=python&logoColor=white" alt="Python">
-<img src="https://img.shields.io/badge/NLP-Transformers%20%7C%20LLMs-FFD21E.svg?logo=huggingface&logoColor=black" alt="NLP">
+<img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11-3776AB.svg?logo=python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/LLM-OpenAI%20API%20%7C%20Ephemeris%20Engine-412991.svg?logo=openai&logoColor=white" alt="LLM">
+<img src="https://img.shields.io/badge/GUI-CustomTkinter-3776AB.svg" alt="CustomTkinter">
 <img src="https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg" alt="Status">
 
 **Enterprise-grade, high-performance implementation built and maintained by Abdul Rehman Rattu.**
 
-[Overview](#overview) • [Key Features](#key-features) • [Installation & Usage](#quickstart--usage) • [Author & Maintainer](#author--maintainer)
+[Overview](#overview) • [Key Features](#key-features) • [Installation & Usage](#quickstart--deployment) • [Author & Maintainer](#author--maintainer)
 
 </div>
 
@@ -130,6 +131,8 @@ Launch the AstroAI desktop assistant:
 ```bash
 python astroai.py
 ```
+
+---
 
 ---
 
