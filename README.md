@@ -1,5 +1,20 @@
 # AstroAI: Conversational Astrology and Ephemeris Diagnostic Desktop Assistant
 
+<div align="center">
+
+[<img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="License">](https://opensource.org/licenses/Apache-2.0)
+<img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB.svg?logo=python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/NLP-Transformers%20%7C%20LLMs-FFD21E.svg?logo=huggingface&logoColor=black" alt="NLP">
+<img src="https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg" alt="Status">
+
+**Enterprise-grade, high-performance implementation built and maintained by Abdul Rehman Rattu.**
+
+[Overview](#overview) • [Key Features](#key-features) • [Installation & Usage](#quickstart--usage) • [Author & Maintainer](#author--maintainer)
+
+</div>
+
+---
+
 ## Overview
 
 Astrological and celestial analysis traditionally requires manual ephemeris table lookups, planetary coordinate calculations, and complex zodiac chart synthesis.
@@ -7,7 +22,6 @@ Astrological and celestial analysis traditionally requires manual ephemeris tabl
 This project implements **AstroAI**, an interactive desktop application that automates natal chart calculations, zodiac personality profiling, planetary transit assessments, and conversational query handling. Built with Python and Tkinter, AstroAI pairs mathematical birth chart algorithms with a conversational rule engine to provide real-time astrological interpretations through a dedicated graphical interface.
 
 ---
-
 
 ---
 
@@ -116,3 +130,15 @@ Launch the AstroAI desktop assistant:
 ```bash
 python astroai.py
 ```
+
+---
+
+## Author & Maintainer
+
+**Abdul Rehman Rattu**  
+*Forward Deployed AI Engineer & Solutions Architect*  
+*Founder & Technical Lead, Rapide Technologies*
+
+* **Email**: [rattu786.ar@gmail.com](mailto:rattu786.ar@gmail.com)
+* **LinkedIn**: [linkedin.com/in/abdul-rehman-rattu-395bba237](https://www.linkedin.com/in/abdul-rehman-rattu-395bba237)
+* **GitHub**: [github.com/AbdulRehmanRattu](https://github.com/AbdulRehmanRattu)
